@@ -12,10 +12,11 @@ func main() {
 	torrentName := os.Args[1]
 
 	subject := "Downloaded " + torrentName
-	from := "forseti@aldaviva.com"
-	to := "ben@aldaviva.com"
-	date := time.Now().Format(RFC_2822_DATE_FORMAT)
-	body := "From: "+from+"\r\nTo: "+to+"\r\nDate: "+date+"\r\nSubject: "+subject+"\r\n\r\n'"+torrentName+"' finished torrenting"
+	from    := "forseti@aldaviva.com"
+	to      := "ben@aldaviva.com"
+	date    := time.Now().Format(RFC_2822_DATE_FORMAT)
+	body    := fmt.Sprintf("From: %s\r\nTo: %s\r\nDate: %s\r\nSubject: %s\r\n\r\n'%s' finished torrenting", from, to, date, subject, torrentName)
+
 	fmt.Printf("Sending mail (subject = %s, from = %s, to = %s, body = %s)\n", subject, from, to, body)
 
 	sendError := smtp.SendMail(SMTP_SERVER, nil, from, []string{to}, []byte(body))
