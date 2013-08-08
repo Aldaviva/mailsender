@@ -12,7 +12,7 @@ func main() {
 	torrentName := os.Args[1]
 
 	subject := "Downloaded " + torrentName
-	from    := "forseti@aldaviva.com"
+	from    := "utorrent@aldaviva.com"
 	to      := "ben@aldaviva.com"
 	date    := time.Now().Format(RFC_2822_DATE_FORMAT)
 	body    := fmt.Sprintf("From: %s\r\nTo: %s\r\nDate: %s\r\nSubject: %s\r\n\r\n'%s' finished torrenting", from, to, date, subject, torrentName)
